@@ -32,24 +32,32 @@ class Chart extends StatelessWidget {
             DateFormat.E().format(weekDay)[0], //Retira a primeira letra do dia
         'value': totalSum,
       };
+    }).reversed.toList();
+  }
+
+  double get _weekTotalValue {
+    return groupedTransactions.fold(0.0, (sum, tr) {
+      return sum + tr['value'];
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    groupedTransactions;
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
-      child: Container(
-        padding: EdgeInsets.all(8),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: groupedTransactions.map((tr) {
-            return ChartBar(
-              label: tr['day'],
-              value: tr['value'],
-              percentage: 0.8,
+            return Expanded(
+              child: ChartBar(
+                label: tr['day'],
+                value: tr['value'],
+                percentage: _weekTotalValue == 0 ? 0
+                : (tr['value'] as double) / _weekTotalValue,
+              ),
             );
           }).toList(),
         ),
