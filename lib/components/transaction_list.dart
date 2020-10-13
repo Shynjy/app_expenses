@@ -10,70 +10,67 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 430,
-      child: transactions.isEmpty
-          ? Column(
-              children: <Widget>[
-                SizedBox(height: 20),
-                Text(
-                  'Nenhuma Transação Cadastrada',
-                  style: Theme.of(context).textTheme.headline6,
+    return transactions.isEmpty
+        ? Column(
+            children: <Widget>[
+              SizedBox(height: 20),
+              Text(
+                'Nenhuma Transação Cadastrada',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              SizedBox(height: 20),
+              Container(
+                height: 200,
+                child: Image.asset(
+                  'assets/images/waiting.png',
+                  fit: BoxFit.cover,
                 ),
-                SizedBox(height: 20),
-                Container(
-                  height: 200,
-                  child: Image.asset(
-                    'assets/images/waiting.png',
-                    fit: BoxFit.cover,
-                  ),
+              ),
+            ],
+          )
+        : ListView.builder(
+            itemCount: transactions.length,
+            itemBuilder: (ctx, index) {
+              final tr = transactions[index];
+              return Card(
+                elevation: 5,
+                margin: EdgeInsets.symmetric(
+                  vertical: 8,
+                  horizontal: 20,
                 ),
-              ],
-            )
-          : ListView.builder(
-              itemCount: transactions.length,
-              itemBuilder: (ctx, index) {
-                final tr = transactions[index];
-                return Card(
-                  elevation: 5,
-                  margin: EdgeInsets.symmetric(
-                    vertical: 8,
-                    horizontal: 20,
-                  ),
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      radius: 30,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 10, 8, 0),
-                        child: Column(
-                          children: [
-                            Text(
-                              'R\$',
-                              style: TextStyle(fontSize: 8),
-                            ),
-                            FittedBox(
-                              child: Text('${tr.value.toStringAsFixed(2)}'),
-                            ),
-                          ],
-                        ),
+                child: ListTile(
+                  leading: CircleAvatar(
+                    radius: 30,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 10, 8, 0),
+                      child: Column(
+                        children: [
+                          Text(
+                            'R\$',
+                            style: TextStyle(fontSize: 8),
+                          ),
+                          FittedBox(
+                            child: Text('${tr.value.toStringAsFixed(2)}'),
+                          ),
+                        ],
                       ),
                     ),
-                    title: Text(
-                      tr.title,
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                    subtitle: Text(
-                      DateFormat('y MMM d').format(tr.date),
-                    ),
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete),
-                      color: Theme.of(context).errorColor,
-                      onPressed: () => onRemove(tr.id),
-                    ),
                   ),
-                );
-              },
-            ),
-    );
+                  title: Text(
+                    tr.title,
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  subtitle: Text(
+                    DateFormat('y MMM d').format(tr.date),
+                  ),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    color: Theme.of(context).errorColor,
+                    onPressed: () => onRemove(tr.id),
+                  ),
+                ),
+              );
+            },
+          );
   }
 }
