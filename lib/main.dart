@@ -54,42 +54,42 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _transactions = [
-    Transaction(
-      id: 't0',
-      title: 'Banana',
-      value: 5.89,
-      date: DateTime.now().subtract(Duration(days: 33)),
-    ),
-    Transaction(
-      id: 't1',
-      title: 'Novo Tênis de Corrida',
-      value: 310.76,
-      date: DateTime.now().subtract(Duration(days: 3)),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 200.99,
-      date: DateTime.now().subtract(Duration(days: 4)),
-    ),
-    Transaction(
-      id: 't0',
-      title: 'Banana',
-      value: 5.89,
-      date: DateTime.now().subtract(Duration(days: 33)),
-    ),
-    Transaction(
-      id: 't3',
-      title: 'Novo Tênis de Corrida',
-      value: 310.76,
-      date: DateTime.now().subtract(Duration(days: 3)),
-    ),
-    Transaction(
-      id: 't4',
-      title: 'Conta de Luz',
-      value: 200.99,
-      date: DateTime.now().subtract(Duration(days: 4)),
-    ),
+    // Transaction(
+    //   id: 't0',
+    //   title: 'Banana',
+    //   value: 5.89,
+    //   date: DateTime.now().subtract(Duration(days: 33)),
+    // ),
+    // Transaction(
+    //   id: 't1',
+    //   title: 'Novo Tênis de Corrida',
+    //   value: 310.76,
+    //   date: DateTime.now().subtract(Duration(days: 3)),
+    // ),
+    // Transaction(
+    //   id: 't2',
+    //   title: 'Conta de Luz',
+    //   value: 200.99,
+    //   date: DateTime.now().subtract(Duration(days: 4)),
+    // ),
+    // Transaction(
+    //   id: 't0',
+    //   title: 'Banana',
+    //   value: 5.89,
+    //   date: DateTime.now().subtract(Duration(days: 33)),
+    // ),
+    // Transaction(
+    //   id: 't3',
+    //   title: 'Novo Tênis de Corrida',
+    //   value: 310.76,
+    //   date: DateTime.now().subtract(Duration(days: 3)),
+    // ),
+    // Transaction(
+    //   id: 't4',
+    //   title: 'Conta de Luz',
+    //   value: 200.99,
+    //   date: DateTime.now().subtract(Duration(days: 4)),
+    // ),
   ];
   bool _showChart = false;
 
