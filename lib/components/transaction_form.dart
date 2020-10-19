@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+
+import 'adaptative_button.dart';
 
 class TransactionForm extends StatefulWidget {
   final void Function(String, double, DateTime) onSubmit;
@@ -15,6 +18,8 @@ class _TransactionFormState extends State<TransactionForm> {
   final _valueController = new TextEditingController();
   DateTime _selectedDate = DateTime.now();
 
+
+//
   _submitForm() {
     final title = _titleController.text;
     final value = double.tryParse(_valueController.text) ?? 0.0;
@@ -25,7 +30,7 @@ class _TransactionFormState extends State<TransactionForm> {
     widget.onSubmit(title, value, _selectedDate);
   }
 
-  //Função que abre o calendário
+  // Abre o calendário
   _showDatePicker() {
     showDatePicker(
       context: context,
@@ -44,16 +49,13 @@ class _TransactionFormState extends State<TransactionForm> {
 
   @override
   Widget build(BuildContext context) {
+    var availableFormHeight = MediaQuery.of(context).viewInsets.bottom + 10;
+
     return SingleChildScrollView(
       child: Card(
         elevation: 5,
         child: Padding(
-          padding: const EdgeInsets.only(
-            top: 10,
-            right: 10,
-            left: 10,
-            bottom: 10,
-          ),
+          padding: const EdgeInsets.all(10),
           child: Column(
             children: <Widget>[
               TextField(
@@ -78,9 +80,9 @@ class _TransactionFormState extends State<TransactionForm> {
                   children: <Widget>[
                     Expanded(
                       child: Text(
-                        _selectedDate == null 
-                        ? 'Nenhuma data selecionada!'
-                        : 'Data selecionada\n${DateFormat('dd/MM/y').format(_selectedDate)}',
+                        _selectedDate == null
+                            ? 'Nenhuma data selecionada!'
+                            : 'Data selecionada\n${DateFormat('dd/MM/y').format(_selectedDate)}',
                       ),
                     ),
                     FlatButton(
@@ -99,16 +101,14 @@ class _TransactionFormState extends State<TransactionForm> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  RaisedButton(
-                    child: Text('Nova Transação'),
-                    color: Theme.of(context).primaryColor,
-                    textColor: Theme.of(context).textTheme.button.color,
+                  AdaptativeButton(
+                    label: 'Nova Transação',
                     onPressed: _submitForm,
                   ),
                 ],
               ),
               SizedBox(
-                height: MediaQuery.of(context).viewInsets.bottom * 3,
+                height: availableFormHeight,
               )
             ],
           ),
