@@ -9,7 +9,7 @@ class AdaptativeDatePicker extends StatelessWidget {
   final DateTime selectedDate;
   final Function(DateTime) onDateChange;
 
-  AdaptativeDatePicker({
+  const AdaptativeDatePicker({
     this.selectedDate,
     this.onDateChange,
   });
@@ -56,7 +56,7 @@ class AdaptativeDatePicker extends StatelessWidget {
                 ),
                 FlatButton(
                   textColor: Theme.of(context).primaryColor,
-                  child: Text(
+                  child: const Text(
                     'Selecionar Data',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,

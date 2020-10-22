@@ -5,7 +5,7 @@ class ChartBar extends StatelessWidget {
   final double value;
   final double percentage;
 
-  ChartBar({
+  const ChartBar({
     this.label,
     this.value,
     this.percentage,
@@ -42,7 +42,7 @@ class ChartBar extends StatelessWidget {
                           color: Colors.grey,
                           width: 1.0,
                         ),
-                        color: Color.fromRGBO(220, 220, 220, 1),
+                        color: const Color.fromRGBO(220, 220, 220, 1),
                         borderRadius: BorderRadius.circular(5),
                       ),
                     ),

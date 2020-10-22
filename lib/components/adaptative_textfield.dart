@@ -10,7 +10,7 @@ class AdaptativeTextField extends StatelessWidget {
   final Function(String) onSubmitted;
   final TextInputAction textInputAction;
 
-  AdaptativeTextField({
+  const AdaptativeTextField({
     this.label,
     this.controller,
     this.keyboardType = TextInputType.text,
