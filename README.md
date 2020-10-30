@@ -11,7 +11,7 @@ Um aplicativo de cadastro de gastos semanais.
 
 ### Inglês:<br>
 A fictitious project just to study flutter.
-A weekly expense record application.
+A weekly expense record app.
 
 ## :octocat: Conhecimentos usados
 ### Português:<br>
